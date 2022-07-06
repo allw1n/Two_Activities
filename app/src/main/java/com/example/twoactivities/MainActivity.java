@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_MESSAGE = "com.example.android.twoactivities.extra.MESSAGE";
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
     private String reply;
-    private Button buttonMain;
     private EditText editTextMain;
     private TextView replyText, replyHeader;
 
@@ -78,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d(LOG_TAG, "--------");
         Log.d(LOG_TAG, "onCreate");
 
-        buttonMain = findViewById(R.id.buttonMain);
+        Button buttonMain = findViewById(R.id.buttonMain);
         editTextMain = findViewById(R.id.editTextMain);
         replyText = findViewById(R.id.replyText);
         replyHeader = findViewById(R.id.replyHeader);
@@ -100,7 +99,9 @@ public class MainActivity extends AppCompatActivity {
                     public void onActivityResult(ActivityResult result) {
                         if (result.getResultCode() == Activity.RESULT_OK) {
                             Intent data = result.getData();
-                            reply = data.getStringExtra(SecondActivity.EXTRA_REPLY);
+                            if (data != null) {
+                                reply = data.getStringExtra(SecondActivity.EXTRA_REPLY);
+                            }
                             replyText.setText(reply);
                             replyHeader.setVisibility(View.VISIBLE);
                             replyText.setVisibility(View.VISIBLE);

@@ -14,7 +14,6 @@ public class SecondActivity extends AppCompatActivity {
 
     public static final String EXTRA_REPLY = "com.example.android.twoactivities.extra.REPLY";
     private static final String LOG_TAG = SecondActivity.class.getSimpleName();
-    private Button buttonReply;
     private EditText editTextReply;
 
     @Override
@@ -61,7 +60,7 @@ public class SecondActivity extends AppCompatActivity {
         Log.d(LOG_TAG, "--------");
         Log.d(LOG_TAG, "onCreate");
 
-        buttonReply = findViewById(R.id.buttonReply);
+        Button buttonReply = findViewById(R.id.buttonReply);
         editTextReply = findViewById(R.id.editTextReply);
 
         Intent intent = getIntent();
